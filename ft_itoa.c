@@ -1,37 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 15:26:21 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/07 17:33:42 by rrakman          ###   ########.fr       */
+/*   Created: 2022/10/07 18:56:57 by rrakman           #+#    #+#             */
+/*   Updated: 2022/10/07 23:38:41 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+static int	ft_numlen(long nb)
 {
-	char	*d;
-	char	*s;
 	size_t	i;
 
 	i = 0;
-	d = (char *)dst;
-	s = (char *)src;
-	if (!dst && !src)
-		return (0);
-	if (d >= s)
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
 	{
-		while (len > 0)
-		{
-			d[len - 1] = s[len - 1];
-			len--;
-		}
+		nb *= -1;
+		i++;
 	}
-	else
-		ft_memcpy(dst, src, len);
-	return ((void *)dst);
+	while (nb > 0)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	long long	nb;
+	size_t		len;
+	char		*res;
+
+	nb = n;
+	len = ft_numlen(nb);
+	res = ft_calloc(len + 1, 1);
+	if (!res)
+		return (0);
+	if (nb == 0)
+	{
+		res[0] = '0';
+		return (res);
+	}
+	if (nb < 0)
+	{
+		res[0] = '-';
+		nb *= -1;
+	}
+	while (nb > 0)
+	{
+		res[--len] = (nb % 10) + '0';
+		nb /= 10;
+	}
+	return (res);
 }
