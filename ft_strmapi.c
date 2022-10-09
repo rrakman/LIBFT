@@ -1,47 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 13:55:44 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/08 19:34:00 by rrakman          ###   ########.fr       */
+/*   Created: 2022/10/08 17:21:04 by rrakman           #+#    #+#             */
+/*   Updated: 2022/10/08 19:26:57 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(char c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (c == '\f' || c == '\n' || c == '\r'
-		|| c == '\t' || c == '\v' || c == ' ')
-		return (1);
-	else
-		return (0);
-}
-
-int	ft_atoi(const char *str)
-{
-	int			i;
-	int			res;
-	int			sign;
+	size_t	i;
+	size_t	len;
+	char	*str;
 
 	i = 0;
-	sign = 1;
-	res = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (!s || !f)
+		return (0);
+	len = ft_strlen(s);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (i < len)
 	{
-		if (str[i] == '-')
-			sign = -1;
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	while (ft_isdigit(str[i]))
-	{
-		res = res * 10 + (str[i] - '0');
-		i++;
-	}
-	return (sign * res);
+	str[i] = '\0';
+	return (str);
 }
