@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 19:43:48 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/09 19:26:20 by rrakman          ###   ########.fr       */
+/*   Created: 2022/10/10 17:25:36 by rrakman           #+#    #+#             */
+/*   Updated: 2022/10/10 17:35:13 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
-	char	*dest;
-	char	*source;
-
-	i = 0;
-	dest = (char *) dst;
-	source = (char *) src;
-	if (!dest && !source)
-		return (0);
-	while (i < n)
-	{
-		dest[i] = source[i];
-		i++;
-	}
-	return (dst);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
