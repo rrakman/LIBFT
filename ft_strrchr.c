@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:25:44 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/03 17:00:15 by rrakman          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:13:52 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	n;
+	int	len;
 
-	n = ft_strlen(s);
-	while (n >= 0)
+	len = ft_strlen(s);
+	while (len >= 0)
 	{
-		if (s[n] == (char)c)
-			return ((char *)s + n);
-		n--;
+		if (s[len] == (char)c)
+			return ((char *)s + len);
+		len--;
 	}
-	if (!(char)c)
-		return ((char *)s + n);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 22:17:45 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/11 01:09:29 by rrakman          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:25:06 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 		start++;
 	}
-	sub[i] = '\0';
 	return (sub);
 }
