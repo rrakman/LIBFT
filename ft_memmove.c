@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:26:21 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/07 17:33:42 by rrakman          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:50:25 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,17 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	char	*d;
 	char	*s;
-	size_t	i;
 
-	i = 0;
 	d = (char *)dst;
 	s = (char *)src;
-	if (!dst && !src)
+	if (!d && !s)
 		return (0);
-	if (d >= s)
+	if (d > s)
 	{
-		while (len > 0)
-		{
-			d[len - 1] = s[len - 1];
-			len--;
-		}
+		while (len--)
+			d[len] = s[len];
 	}
 	else
-		ft_memcpy(dst, src, len);
-	return ((void *)dst);
+		ft_memcpy(d, s, len);
+	return (d);
 }

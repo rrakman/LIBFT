@@ -6,7 +6,7 @@
 #    By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 18:40:15 by rrakman           #+#    #+#              #
-#    Updated: 2022/10/01 22:39:37 by rrakman          ###   ########.fr        #
+#    Updated: 2022/10/15 16:51:01 by rrakman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ all: $(NAME)
 $(NAME):
 	@CC  $(CFLAGS) -c $(SRC)
 	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
 
 clean:
 	@rm -f $(OBJ)
